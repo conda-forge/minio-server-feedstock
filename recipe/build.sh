@@ -14,6 +14,7 @@ echo "LDFLAGS: ${LDFLAGS}"
 echo "Build MinIO Server"
 mkdir -p ${PREFIX}/bin
 go build -tags kqueue -trimpath --ldflags "${LDFLAGS}" -o "${PREFIX}/bin/minio"
+chmod -R +w gopath  # allow conda to cleanup the build environment
 
 # collect licenses
 # see manual_licenses for licenses that are not automatically detected
