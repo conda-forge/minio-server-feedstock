@@ -5,8 +5,6 @@ echo "Setup Environment Variables"
 export CGO_ENABLED=0
 export MINIO_RELEASE=RELEASE
 export GOPATH=$(go env GOPATH)
-echo https://api.github.com/repos/minio/minio/commits/${GIT_TAG}
-curl --silent https://api.github.com/repos/minio/minio/commits/${GIT_TAG} | jq
 export GIT_COMMIT=$(curl --silent https://api.github.com/repos/minio/minio/commits/${GIT_TAG} | jq --raw-output .sha)
 echo "GIT_COMMIT: ${GIT_COMMIT}"
 LDFLAGS=$(go run buildscripts/gen-ldflags.go "${GIT_TIME}")
