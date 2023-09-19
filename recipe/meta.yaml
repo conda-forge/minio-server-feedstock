@@ -15,7 +15,7 @@ source:
     - patches/0001-commitID.patch
 
 build:
-  number: 3
+  number: 4
   script_env:
     - GIT_TAG={{ version }}
     - GIT_TIME={{ time }}
