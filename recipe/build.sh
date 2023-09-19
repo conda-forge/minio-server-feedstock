@@ -7,7 +7,7 @@ export MINIO_RELEASE=RELEASE
 export GOPATH=$(go env GOPATH)
 export GIT_COMMIT=$(curl --silent https://api.github.com/repos/minio/minio/commits/${GIT_TAG} | jq --raw-output .sha)
 echo "GIT_COMMIT: ${GIT_COMMIT}"
-LDFLAGS=$(go run buildscripts/gen-ldflags.go "${GIT_TIME}")
+LDFLAGS=$(GOARCH='' GOOS='' go run buildscripts/gen-ldflags.go "${GIT_TIME}")
 echo "LDFLAGS: ${LDFLAGS}"
 
 # build
