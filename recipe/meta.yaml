@@ -1,6 +1,6 @@
 {% set name = "minio-server" %}
-{% set version = "RELEASE.2023-11-20T22-40-07Z" %}
-{% set sha256 = "b08cb3698e18c59a7a70093533407db30053b2ee595f6500dc5bfb3b42d795bb" %}
+{% set version = "RELEASE.2024-02-06T21-36-22Z" %}
+{% set sha256 = "ca43a2a8f0af45989326dfe31520271509914a47990980e01a9c7e62fc1ac857" %}
 {% set time = version|replace("RELEASE.", "") %}
 
 package:
