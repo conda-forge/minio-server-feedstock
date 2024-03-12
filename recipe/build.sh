@@ -26,6 +26,7 @@ go-licenses save . \
     --ignore github.com/cespare/xxhash/v2 \
     --ignore github.com/dchest/siphash \
     --ignore github.com/golang/snappy \
+    --ignore github.com/klauspost/compress/flate \
     --ignore github.com/klauspost/compress/huff0 \
     --ignore github.com/klauspost/compress/internal/cpuinfo \
     --ignore github.com/klauspost/compress/s2 \
@@ -42,7 +43,7 @@ go-licenses save . \
     --ignore github.com/minio/dperf/pkg/dperf \
     --ignore github.com/minio/filepath \
     --ignore github.com/minio/highwayhash \
-    --ignore github.com/minio/kes-go \
+    --ignore github.com/minio/kms-go/kes \
     --ignore github.com/minio/madmin-go/v3 \
     --ignore github.com/minio/mc/cmd \
     --ignore github.com/minio/mc/pkg \
