@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # setup
 echo "Setup Environment Variables"
 export CGO_ENABLED=0
