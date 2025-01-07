@@ -1,6 +1,6 @@
 {% set name = "minio-server" %}
-{% set version = "RELEASE.2024-03-10T02-53-48Z" %}
-{% set sha256 = "8ee8fc38029a43d7bf170c14661af6e7541b729466c939a9123914ef8474975e" %}
+{% set version = "RELEASE.2024-12-18T13-15-44Z" %}
+{% set sha256 = "d7d044f11a343389b1952c48a3e15feef6efa63c67b9f025c212a04016f05037" %}
 {% set time = version|replace("RELEASE.", "") %}
 
 package:
@@ -52,3 +52,4 @@ about:
 extra:
   recipe-maintainers:
     - kenodegard
+    - pavelzw

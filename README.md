@@ -214,4 +214,5 @@ Feedstock Maintainers
 =====================
 
 * [@kenodegard](https://github.com/kenodegard/)
+* [@pavelzw](https://github.com/pavelzw/)
 

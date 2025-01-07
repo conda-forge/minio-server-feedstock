@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # setup
 echo "Setup Environment Variables"
 export CGO_ENABLED=0
@@ -44,6 +46,7 @@ go-licenses save . \
     --ignore github.com/minio/filepath \
     --ignore github.com/minio/highwayhash \
     --ignore github.com/minio/kms-go/kes \
+    --ignore github.com/minio/kms-go/kms \
     --ignore github.com/minio/madmin-go/v3 \
     --ignore github.com/minio/mc/cmd \
     --ignore github.com/minio/mc/pkg \
