@@ -1,5 +1,5 @@
 {% set name = "minio-server" %}
-{% set version = "2025-01-20T14-49-07Z" %}
+{% set version = "2025-02-28T09-55-16Z" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/minio/minio/archive/RELEASE.{{ version }}.tar.gz
-  sha256: ae4855815f9276662219debc707af1c4403d9ea502d27234f9a5d1c890f98dfc
+  sha256: 012138b7541bc40850c8ed9ef1dc61bfa4a7d8facd9be031120af524bddd5575
   patches:
     # patch gen-ldflags.go to not use `git` to detect the git commit hash
     # instead use GitHub API (see build/script_env/GIT_TAG and GIT_COMMIT in build scripts)
     - patches/0001-commitID.patch
 
 build:
-  number: 1
+  number: 0
   script_env:
     - GIT_TAG=RELEASE.{{ version }}
     - GIT_TIME={{ version }}
