@@ -23,6 +23,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 echo Collect Licenses
 go-licenses save . ^
     --save_path=%SRC_DIR%\library_licenses\ ^
+    --ignore github.com/apache/thrift/lib/go/thrift ^
     --ignore github.com/cespare/xxhash/v2 ^
     --ignore github.com/dchest/siphash ^
     --ignore github.com/golang/snappy ^
