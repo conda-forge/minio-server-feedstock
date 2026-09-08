@@ -7,8 +7,20 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 for /f "delims=" %%i in ('curl --silent https://api.github.com/repos/minio/minio/commits/%GIT_TAG% ^| jq --raw-output .sha') do set GIT_COMMIT=%%i
 if %errorlevel% neq 0 exit /b %errorlevel%
 echo GIT_COMMIT: %GIT_COMMIT%
-for /f "delims=" %%i in ('go run buildscripts\gen-ldflags.go "%GIT_TIME%"') do set LDFLAGS=%%i
+:: Run the helper for the build machine, then restore the target settings.
+setlocal
+set "GOARCH="
+set "GOOS="
+go run buildscripts\gen-ldflags.go "%GIT_TIME%" > "%SRC_DIR%\conda-ldflags.txt"
 if %errorlevel% neq 0 exit /b %errorlevel%
+endlocal
+set "LDFLAGS="
+for /f "usebackq delims=" %%i in ("%SRC_DIR%\conda-ldflags.txt") do set "LDFLAGS=%%i"
+del "%SRC_DIR%\conda-ldflags.txt"
+if not defined LDFLAGS (
+    echo Failed to generate MinIO linker flags.
+    exit /b 1
+)
 echo LDFLAGS: %LDFLAGS%
 
 :: build

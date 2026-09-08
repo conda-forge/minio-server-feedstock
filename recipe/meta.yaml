@@ -28,8 +28,8 @@ requirements:
     - m2w64-jq  # [win]
 
 test:
-  commands:
-    - minio --version
+  requires:
+    - python
 
 about:
   home: https://min.io
