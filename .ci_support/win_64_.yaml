@@ -4,11 +4,7 @@ channel_targets:
 - conda-forge main
 curl:
 - '8'
-pin_run_as_build:
-  python:
-    min_pin: x.x
-    max_pin: x.x
-python:
-- 3.12.* *_cpython
+github_actions_labels:
+- default
 target_platform:
 - win-64
