@@ -1,5 +1,3 @@
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -7,6 +5,8 @@ channel_targets:
 curl:
 - '8'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
+github_actions_labels:
+- default
 target_platform:
 - linux-64

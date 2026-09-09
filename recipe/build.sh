@@ -25,6 +25,7 @@ chmod -R +w gopath  # allow conda to cleanup the build environment
 echo "Collect Licenses"
 go-licenses save . \
     --save_path="${SRC_DIR}/library_licenses/" \
+    --ignore github.com/apache/thrift/lib/go/thrift \
     --ignore github.com/cespare/xxhash/v2 \
     --ignore github.com/dchest/siphash \
     --ignore github.com/golang/snappy \
