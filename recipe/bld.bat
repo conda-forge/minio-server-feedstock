@@ -4,7 +4,7 @@ set CGO_ENABLED=0
 set MINIO_RELEASE=RELEASE
 for /f "delims=" %%i in ('go env GOPATH') do set GOPATH=%%i
 if %errorlevel% neq 0 exit /b %errorlevel%
-for /f "delims=" %%i in ('curl --silent https://api.github.com/repos/minio/minio/commits/%GIT_TAG% ^| jq --raw-output .sha') do set GIT_COMMIT=%%i
+for /f "delims=" %%i in ('curl --silent --fail -H "Accept: application/vnd.github.sha" https://api.github.com/repos/minio/minio/commits/%GIT_TAG%') do set GIT_COMMIT=%%i
 if %errorlevel% neq 0 exit /b %errorlevel%
 echo GIT_COMMIT: %GIT_COMMIT%
 :: Run the helper for the build machine, then restore the target settings.

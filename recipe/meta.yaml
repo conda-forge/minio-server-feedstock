@@ -24,8 +24,6 @@ requirements:
     - {{ compiler("go-nocgo") }}
     - curl
     - go-licenses
-    - jq  # [not win]
-    - m2w64-jq  # [win]
 
 test:
   requires:
