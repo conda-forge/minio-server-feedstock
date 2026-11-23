@@ -22,7 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler("go-nocgo") }}
-    - curl
+    - git
     - go-licenses
 
 test:
