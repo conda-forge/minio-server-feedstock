@@ -4,7 +4,13 @@ set CGO_ENABLED=0
 set MINIO_RELEASE=RELEASE
 for /f "delims=" %%i in ('go env GOPATH') do set GOPATH=%%i
 if %errorlevel% neq 0 exit /b %errorlevel%
-for /f "delims=" %%i in ('curl --silent https://api.github.com/repos/minio/minio/commits/%GIT_TAG% ^| jq --raw-output .sha') do set GIT_COMMIT=%%i
+:: resolve the tag to its commit (the last line is the peeled commit for annotated tags)
+set "GIT_COMMIT="
+for /f "tokens=1" %%i in ('git ls-remote https://github.com/minio/minio "refs/tags/%GIT_TAG%" "refs/tags/%GIT_TAG%^{}"') do set "GIT_COMMIT=%%i"
+if not defined GIT_COMMIT (
+    echo Failed to resolve commit for %GIT_TAG%
+    exit /b 1
+)
 if %errorlevel% neq 0 exit /b %errorlevel%
 echo GIT_COMMIT: %GIT_COMMIT%
 :: Run the helper for the build machine, then restore the target settings.

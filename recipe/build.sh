@@ -7,7 +7,13 @@ echo "Setup Environment Variables"
 export CGO_ENABLED=0
 export MINIO_RELEASE=RELEASE
 export GOPATH=$(go env GOPATH)
-export GIT_COMMIT=$(curl --silent https://api.github.com/repos/minio/minio/commits/${GIT_TAG} | jq --raw-output .sha)
+# resolve the tag to its commit (the last line is the peeled commit for annotated tags)
+GIT_COMMIT=$(git ls-remote https://github.com/minio/minio "refs/tags/${GIT_TAG}" "refs/tags/${GIT_TAG}^{}" | tail -n1 | cut -f1)
+if [[ -z "${GIT_COMMIT}" ]]; then
+    echo "Failed to resolve commit for ${GIT_TAG}"
+    exit 1
+fi
+export GIT_COMMIT
 echo "GIT_COMMIT: ${GIT_COMMIT}"
 LDFLAGS=$(GOARCH='' GOOS='' go run buildscripts/gen-ldflags.go "${GIT_TIME}")
 echo "LDFLAGS: ${LDFLAGS}"
